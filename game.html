@@ -30,6 +30,31 @@
 
 
     function startGame(gs) {
+
+        function A() {
+
+            this.keyDown = function(k) {
+                console.log(k);
+
+                switch(k) {
+                    case 39: {
+                        for (var rowNumber = 0; rowNumber < levelArray.length; rowNumber++) {
+                            for(var columnNumber = 0; columnNumber < levelArray[rowNumber].length; columnNumber++) {
+                                if( levelArray[rowNumber][columnNumber] == 5){
+                                    if (columnNumber < (levelArray[0].length - 1)) {
+                                        levelArray[rowNumber][columnNumber] = 1;
+                                        levelArray[rowNumber][columnNumber + 1] = 5;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            };
+        }
+
         function Cell(row, col) {
             this.type;
 
@@ -40,9 +65,14 @@
             this.draw = function(canvas,gs) {
                 canvas.beginPath();
                 canvas.rect(col * 60, row * 60, 60, 60);
+
                 canvas.closePath();
                 canvas.stroke();
+                if ( this.type == 5) {
+                    canvas.fill();
+                }
             }
+
         }
 
         for (var rowNumber = 0; rowNumber < levelArray.length; rowNumber++) {
@@ -50,6 +80,7 @@
                 gs.addEntity( new Cell(rowNumber, columnNumber));
             }
         }
+        gs.addEntity(new A());
 //        gs.addEntity(new GameBoard());
 //        for (i=0; i<20; i++)
 //            gs.(new C());

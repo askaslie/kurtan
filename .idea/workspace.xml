@@ -23,28 +23,10 @@
       <file leaf-file-name="game.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="2" selection-start="798" selection-end="798" vertical-scroll-proportion="0.6909091">
+            <state line="66" column="17" selection-start="2069" selection-end="2069" vertical-scroll-proportion="0.71900827">
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="circles.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/soup/demos/circles.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="38" selection-start="814" selection-end="814" vertical-scroll-proportion="-11.769231">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mousetracking.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/soup/demos/mousetracking.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="4" selection-start="1117" selection-end="1117" vertical-scroll-proportion="-0.65384614">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -218,20 +200,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/soup/demos/mousetracking.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="4" selection-start="1117" selection-end="1117" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/soup/demos/a_star.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="30" selection-start="333" selection-end="333" vertical-scroll-proportion="-10.461538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/soup/js/a_star.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="150" column="13" selection-start="5502" selection-end="5502" vertical-scroll-proportion="0.0">
@@ -241,25 +209,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/soup/quickstart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="96" selection-end="231" vertical-scroll-proportion="-4.576923">
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/soup/demos/circles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="38" selection-start="814" selection-end="814" vertical-scroll-proportion="-11.769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="2" selection-start="798" selection-end="798" vertical-scroll-proportion="0.6909091">
+        <state line="66" column="17" selection-start="2069" selection-end="2069" vertical-scroll-proportion="0.71900827">
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
