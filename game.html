@@ -15,7 +15,6 @@
     * 5 - mark with gamer
     * 6 - exit
     */
-
      var levelArray = [ [0,0,0,0,0,0,0,0],
                         [0,5,1,1,1,1,1,0],
                         [0,1,1,1,1,1,1,0],
@@ -25,34 +24,76 @@
                         [0,1,1,1,1,1,1,0],
                         [0,0,0,0,0,0,0,0]
                         ];
-
 //     var backgroundColorsArray = { '0': }
 
 
     function startGame(gs) {
-
         function A() {
-
             this.keyDown = function(k) {
                 console.log(k);
 
                 switch(k) {
+                    case 37: {
+                        moveObject('left',5);
+                        break;
+                    }
+                    case 38: {
+                        moveObject('up',5);
+                        break;
+                    }
                     case 39: {
-                        for (var rowNumber = 0; rowNumber < levelArray.length; rowNumber++) {
-                            for(var columnNumber = 0; columnNumber < levelArray[rowNumber].length; columnNumber++) {
-                                if( levelArray[rowNumber][columnNumber] == 5){
-                                    if (columnNumber < (levelArray[0].length - 1)) {
-                                        levelArray[rowNumber][columnNumber] = 1;
-                                        levelArray[rowNumber][columnNumber + 1] = 5;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
+                        moveObject('right',5);
+                        break;
+                    }
+                    case 40: {
+                        moveObject('down',5);
+                        break;
                     }
 
                 }
             };
+        }
+
+        function moveObject(direction, objectClassId) {
+            var columns = levelArray[0].length;
+            var rows    = levelArray.length;
+            moving:
+            for (var rowNumber = 0; rowNumber < rows; rowNumber++) {
+                for (var columnNumber = 0; columnNumber < columns; columnNumber++) {
+                    if ( levelArray[rowNumber][columnNumber] == objectClassId){
+                        switch(direction) {
+                            case 'right':
+                                if (columnNumber < (columns - 2)) {
+                                    levelArray[rowNumber][columnNumber] = 1;
+                                    levelArray[rowNumber][columnNumber + 1] = 5;
+                                };
+                                break;
+                            case 'left':
+                                if (columnNumber > 1) {
+                                    levelArray[rowNumber][columnNumber] = 1;
+                                    levelArray[rowNumber][columnNumber - 1] = 5;
+                                };
+                                break;
+                            case 'up':
+                                if (rowNumber > 1 ) {
+                                    levelArray[rowNumber][columnNumber] = 1;
+                                    levelArray[rowNumber - 1][columnNumber] = 5;
+                                };
+                                break;
+                            case 'down':
+                                if (rowNumber < (rows - 2)) {
+                                    levelArray[rowNumber][columnNumber] = 1;
+                                    levelArray[rowNumber + 1][columnNumber] = 5;
+                                    console.log('down');
+                                };
+                                break;
+                            default :
+                                break;
+                        }
+                        break moving;
+                    }
+                }
+            }
         }
 
         function Cell(row, col) {
