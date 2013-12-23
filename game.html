@@ -29,11 +29,11 @@
                         ],
                         winLevel:  [
                             [0,0,0,0,0,0,0,0],
-                            [0,5,1,1,1,1,1,0],
                             [0,1,1,1,1,1,1,0],
                             [0,1,1,1,1,1,1,0],
                             [0,1,1,1,1,1,1,0],
-                            [0,1,1,1,1,3,1,0],
+                            [0,1,1,1,1,1,1,0],
+                            [0,1,1,1,1,6,1,0],
                             [0,1,1,1,1,1,1,0],
                             [0,0,0,0,0,0,0,0]
                         ],
@@ -41,8 +41,12 @@
                     };
      var firstRun = true;
 //     var backgroundColorsArray = { '0': }
+     var win = false;
 
+     var heroX = 0;
+     var heroY = 0;
     //0
+
     var wallImg = new Image();
     wallImg.src  = 'images/wall.png';
     //5
@@ -62,8 +66,6 @@
 
         function A() {
             this.keyDown = function(k) {
-                console.log(k);
-
                 switch(k) {
                     case 37: {
                         moveObject('left');
@@ -82,7 +84,21 @@
                         break;
                     }
                 }
+
             };
+            this.update  = function(){
+                if( win ) {
+                    alert('You win!');
+                    throw 42;
+                }
+
+                levelArray['current'][heroY][heroX] = levelArray['current'][heroY][heroX] - 8;
+                if (levelArray['current'].toString() == levelArray['winLevel'].toString()) {
+                    win = true
+                }
+                levelArray['current'][heroY][heroX] = levelArray['current'][heroY][heroX] + 8;
+
+            }
         }
 
         function moveObject(direction) {
@@ -118,7 +134,6 @@
         }
 
         function getNextCell(direction, count, x, y) {
-
             console.log(arguments);
             var map = levelArray['current'];
             switch(direction) {
@@ -140,15 +155,19 @@
             var moveToType = getNextCell(direction, count, x, y);
             switch(direction) {
                 case 'right':
+                    if(movingType == 8) heroX = heroX + 1;
                     map[y][x + count - 1] = map[y][x + count - 1] - movingType;
                     return map[y][x + count] = movingType + moveToType;
                 case 'left':
+                    if(movingType == 8) heroX = heroX - 1;
                     map[y][x - count + 1] = map[y][x - count + 1] - movingType;
                     return map[y][x - count] = movingType + moveToType;
                 case 'up':
+                    if(movingType == 8) heroY = heroY - 1;
                     map[y - count + 1][x] = map[y - count + 1][x] - movingType;
                     return map[y - count][x] = movingType + moveToType;
                 case 'down':
+                    if(movingType == 8) heroY = heroY + 1;
                     map[y + count - 1][x] = map[y + count - 1][x] - movingType;
                     return map[y + count][x] = movingType + moveToType;
                 default :
@@ -193,13 +212,16 @@
         for (var rowNumber = 0; rowNumber < levelArray['init'].length; rowNumber++) {
             for(var columnNumber = 0; columnNumber < levelArray['init'][rowNumber].length; columnNumber++) {
                 gs.addEntity( new Cell(rowNumber, columnNumber, firstRun));
+                if( levelArray['init'][rowNumber][columnNumber] & 8 ) {
+                    heroX = columnNumber;
+                    heroY = rowNumber;
+                }
             }
         }
         if (firstRun ) {
             levelArray['current'] = levelArray['init'];
         }
         firstRun = false;
-        console.log(1);
         gs.addEntity(new A());
 //        gs.addEntity(new GameBoard());
 //        for (i=0; i<20; i++)
