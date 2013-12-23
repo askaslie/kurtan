@@ -36,16 +36,24 @@
                             [0,1,1,1,1,3,1,0],
                             [0,1,1,1,1,1,1,0],
                             [0,0,0,0,0,0,0,0]
-                        ]
+                        ],
+                        status: 'unfinished'
                     };
      var firstRun = true;
 //     var backgroundColorsArray = { '0': }
+
+    //0
+    var wallImg = new Image();
+    wallImg.src  = 'images/wall.png';
     //5
     var floorChestImg = new Image();
-    floorChestImg.src  = 'images/floorChest.png';
+    floorChestImg.src  = 'images/floorChest2.png';
+    //8
+    var heroImg = new Image();
+    heroImg.src  = 'images/hero.png';
     //6
     var markChestImg = new Image();
-    markChestImg.src  = 'images/markChest.png';
+    markChestImg.src  = 'images/markChest2.png';
     //2
     var markImg = new Image();
     markImg.src  = 'images/mark.png';
@@ -119,9 +127,9 @@
                 case 'left':
                     return map[y][x - count];
                 case 'up':
-                    return map[y - count][x];
+                    return map[y - count] === undefined ? false : map[y - count][x];
                 case 'down':
-                    return map[y + count][x];
+                    return map[y + count] === undefined ? false :map[y + count][x];
                 default :
                     return false;
             }
@@ -159,11 +167,10 @@
                 canvas.beginPath();
 
                 if ( this.type & 8) {
-                    canvas.rect(col * 60, row * 60, 60, 60);
+                    canvas.drawImage(heroImg, col * 60, row * 60);
                     canvas.fill();
                 } else if ( this.type == 0) {
-                    canvas.rect(col * 60, row * 60, 60, 60);
-                    canvas.fillStyle = "#FF0000";
+                    canvas.drawImage(wallImg, col * 60, row * 60);
                     canvas.fill();
                 } else if ( this.type == 5) {
                     canvas.drawImage(floorChestImg, col * 60, row * 60);
@@ -176,13 +183,11 @@
                     canvas.fill();
                 } else {
                     canvas.rect(col * 60, row * 60, 60, 60);
+                    canvas.fillStyle = "#000000";
                     canvas.closePath();
                     canvas.stroke();
                 }
-
-
             }
-
         }
 
         for (var rowNumber = 0; rowNumber < levelArray['init'].length; rowNumber++) {
@@ -194,6 +199,7 @@
             levelArray['current'] = levelArray['init'];
         }
         firstRun = false;
+        console.log(1);
         gs.addEntity(new A());
 //        gs.addEntity(new GameBoard());
 //        for (i=0; i<20; i++)
